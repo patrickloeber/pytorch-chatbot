@@ -77,4 +77,4 @@ Have a look at [intent.json](intents.json). You can customize it according to yo
     ...
   ]
 }
-```console
+```
