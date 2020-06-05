@@ -35,17 +35,16 @@ all_words = [stem(w) for w in all_words if w not in ignore_words]
 all_words = sorted(set(all_words))
 tags = sorted(set(tags))
 
-print (len(xy), "documents")
-print (len(tags), "tags", tags)
-print (len(all_words), "unique stemmed words", all_words)
+print(len(xy), "patterns")
+print(len(tags), "tags:", tags)
+print(len(all_words), "unique stemmed words:", all_words)
 
-# create our training data
+# create training data
 X_train = []
 y_train = []
-# training set, bag of words for each sentence
-for (pattern_words, tag) in xy:
-    # X: bag of words
-    bag = bag_of_words(pattern_words, all_words)
+for (pattern_sentence, tag) in xy:
+    # X: bag of words for each pattern_sentence
+    bag = bag_of_words(pattern_sentence, all_words)
     X_train.append(bag)
     # y: PyTorch CrossEntropyLoss needs only class labels, not one-hot
     label = tags.index(tag)
@@ -94,16 +93,16 @@ train_loader = DataLoader(dataset=dataset,
 
 
 # Train the model
-n_total_steps = len(train_loader)
 for epoch in range(num_epochs):
-    for i, (wrds, lbls) in enumerate(train_loader):  
-        wrds = wrds.to(device)
-        lbls = lbls.to(device)
+    for i, (words, labels) in enumerate(train_loader):
+        words = words.to(device)
+        labels = labels.to(device)
         
         # Forward pass
-        outputs = model(wrds)
-        #lbls = torch.max(lbls, 1)[1]
-        loss = criterion(outputs, lbls)
+        outputs = model(words)
+        # if y would be one-hot, we must apply
+        # labels = torch.max(labels, 1)[1]
+        loss = criterion(outputs, labels)
         
         # Backward and optimize
         optimizer.zero_grad()
