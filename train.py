@@ -9,8 +9,8 @@ from torch.utils.data import Dataset, DataLoader
 from nltk_utils import bag_of_words, tokenize, stem
 from model import NeuralNet
 
-with open('intents.json') as json_data:
-    intents = json.load(json_data)
+with open('intents.json', 'r') as f:
+    intents = json.load(f)
 
 all_words = []
 tags = []
@@ -53,22 +53,14 @@ for (pattern_sentence, tag) in xy:
 X_train = np.array(X_train)
 y_train = np.array(y_train)
 
-device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-
 # Hyper-parameters 
-input_size = len(X_train[0])
-hidden_size = 8
-output_size = len(tags)
 num_epochs = 1000
 batch_size = 8
 learning_rate = 0.001
+input_size = len(X_train[0])
+hidden_size = 8
+output_size = len(tags)
 print(input_size, output_size)
-
-model = NeuralNet(input_size, hidden_size, output_size).to(device)
-
-# Loss and optimizer
-criterion = nn.CrossEntropyLoss()
-optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)  
 
 class ChatDataset(Dataset):
 
@@ -91,10 +83,17 @@ train_loader = DataLoader(dataset=dataset,
                           shuffle=True,
                           num_workers=2)
 
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+model = NeuralNet(input_size, hidden_size, output_size).to(device)
+
+# Loss and optimizer
+criterion = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
 # Train the model
 for epoch in range(num_epochs):
-    for i, (words, labels) in enumerate(train_loader):
+    for (words, labels) in train_loader:
         words = words.to(device)
         labels = labels.to(device)
         
