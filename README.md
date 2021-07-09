@@ -18,6 +18,7 @@ Whatever you prefer (e.g. `conda` or `venv`)
 mkdir myproject
 $ cd myproject
 $ python3 -m venv venv
+$ pip install -r requirements.txt
 ```
 
 ### Activate it
