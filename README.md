@@ -20,6 +20,7 @@ $ cd myproject
 $ python3 -m venv venv
 ```
 
+
 ### Activate it
 Mac / Linux:
 ```console
