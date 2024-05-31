@@ -7,6 +7,7 @@
         "Hey",
         "How are you",
         "Is anyone there?",
+        "Are you there?",
         "Hello",
         "Good day"
       ],
@@ -26,6 +27,40 @@
         "Bye! Come back again soon."
       ]
     },
+    {
+      "tag": "Admission Process",
+      "patterns": [
+        "What are the admission requirements for undergraduate programs?",
+        "How do I apply for admission?",
+        "Can I apply to more than one program?",
+        "Is there an application fee?",
+        "How do I check the status of my application?",
+        "What are the application deadlines?",
+        "How do I apply?",
+        "What are the admission requirements?",
+        "Do you offer financial aid or scholarships for international students?",
+        "What scholarships are available?",
+        "Can I work while studying?",
+      ],
+      "responses": [
+        "The admission requirements include a completed application form, high school transcripts, standardized test scores (e.g., SAT or ACT), a personal statement, and letters of recommendation.",
+        "You can apply for admission online through our website. Complete the application form, submit the required documents, and pay the application fee.",
+        "Complete the online application form.",
+        "Submit your high school transcripts.",
+        "Provide standardized test scores (SAT/ACT).",
+        "Write and submit a personal statement.",
+        "Submit letters of recommendation.",
+        "Pay the application fee.",
+        "Each program may have specific requirements, but generally, you need to provide transcripts, standardized test scores, letters of recommendation, a personal statement, and a completed application form.",
+        "You can apply online through our website. Follow the instructions to fill out the application form and submit the required documents.",
+        "Application deadlines vary by program and intake period. Typically, they are in January for Fall admissions and in October for Spring admissions. Check the specific deadlines on our admissions page.",
+        "Yes, you can apply to multiple programs. However, you will need to submit a separate application for each program.",
+        "Yes, there is an application fee. The amount varies by program. Payment instructions are provided during the application process.",
+        "You can check the status of your application by logging into your account on our admissions portal.",
+        "We offer a variety of scholarships based on academic merit, financial need, and specific talents. Visit our scholarships page for a complete list.",
+        "Yes, students can work part-time on campus. International students have specific regulations regarding employment which will be explained during orientation."
+        },
+        
     {
       "tag": "thanks",
       "patterns": ["Thanks", "Thank you", "That's helpful", "Thank's a lot!"],
